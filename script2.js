@@ -85,66 +85,6 @@ for (let index = 0; index < 5; index++) {
 
 //                     Preentrega n°2:
 
-/* let trenes = [
-  {
-    linea: "roca",
-    estacionNro: 5,
-    hasta: "lanus",
-    precio: 50,
-    tardaEnMin: 15,
-  },
-  {
-    linea: "roca",
-    estacionNro: 6,
-    hasta: "escalada",
-    precio: 50,
-    tardaEnMin: 20,
-  },
-  {
-    linea: "roca",
-    estacionNro: 7,
-    hasta: "banfield",
-    precio: 55,
-    tardaEnMin: 25,
-  },
-  {
-    linea: "roca",
-    estacionNro: 8,
-    hasta: "lomas",
-    precio: 55,
-    tardaEnMin: 30,
-  },
-  {
-    linea: "roca",
-    estacionNro: 9,
-    hasta: "temperley",
-    precio: 60,
-    tardaEnMin: 35,
-  },
-  {
-    linea: "roca",
-    estacionNro: 10,
-    hasta: "adrogue",
-    precio: 60,
-    tardaEnMin: 40,
-  },
-  {
-    linea: "roca",
-    estacionNro: 11,
-    hasta: "burzaco",
-    precio: 65,
-    tardaEnMin: 45,
-  },
-];
-
-let buscar = prompt("Ingrese el nombre de la estacion").toLowerCase;
-let resultado = trenes.find(
-  (trenesObj) => trenesObj.hasta.toLowerCase === buscar
-);
-
-console.log(resultado);
- */
-
 let lineasTrenes = {
   roca: [
     {
@@ -233,6 +173,7 @@ let lineasTrenes = {
       tardaEnMin: 15,
     },
     // ...
+    //muchas lineas y estaciones...
   ],
 };
 
@@ -253,8 +194,10 @@ if (estacionesDeLinea) {
     console.log("Información de la estación seleccionada: ");
     console.log(resultado);
   } else {
-    console.log("La estación ingresada no se encuentra en esta linea");
+    console.log(
+      'La estación "' + estacionSeleccionada + '" no se encuentra en esta linea'
+    );
   }
 } else {
-  console.log("La línea de tren ingresada no existe");
+  console.log('La línea de tren "' + lineaSeleccionada + '" no existe');
 }
