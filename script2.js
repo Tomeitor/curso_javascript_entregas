@@ -23,16 +23,16 @@ do {
   console.log(letra);
 } while (parseInt(letra)); */
 
-/* .                                                      . */
+//  .                                                      .
 
 /* let letra2 = prompt("¿Cual es tu letra favorita?");
 
 while (letra2 != 1) {
   switch (letra2) {
-    case ("a"):
+    case "a":
       alert("Dale, ponele onda");
       break;
-      case ("A"):
+    case "A":
       alert("Dale, ponele onda");
       break;
 
@@ -69,3 +69,192 @@ alert("El precio final es: $" + calcularValorFinal(igresarValor));
 console.log(calcularValorFinal(igresarValor)); */
 
 /* --------------------- Simulador interactivo --------------------- */
+
+/* function impuesto(precio, porcentaje) {
+  return precio + (precio * porcentaje) / 100;
+}
+
+for (let index = 0; index < 5; index++) {
+  let valor = impuesto(
+    parseFloat(prompt("ingrese el precio de su producto")),
+    parseFloat(prompt("ingreser el porcentaje"))
+  );
+  alert(valor);
+}
+ */
+
+//                     Preentrega n°2:
+
+/* let trenes = [
+  {
+    linea: "roca",
+    estacionNro: 5,
+    hasta: "lanus",
+    precio: 50,
+    tardaEnMin: 15,
+  },
+  {
+    linea: "roca",
+    estacionNro: 6,
+    hasta: "escalada",
+    precio: 50,
+    tardaEnMin: 20,
+  },
+  {
+    linea: "roca",
+    estacionNro: 7,
+    hasta: "banfield",
+    precio: 55,
+    tardaEnMin: 25,
+  },
+  {
+    linea: "roca",
+    estacionNro: 8,
+    hasta: "lomas",
+    precio: 55,
+    tardaEnMin: 30,
+  },
+  {
+    linea: "roca",
+    estacionNro: 9,
+    hasta: "temperley",
+    precio: 60,
+    tardaEnMin: 35,
+  },
+  {
+    linea: "roca",
+    estacionNro: 10,
+    hasta: "adrogue",
+    precio: 60,
+    tardaEnMin: 40,
+  },
+  {
+    linea: "roca",
+    estacionNro: 11,
+    hasta: "burzaco",
+    precio: 65,
+    tardaEnMin: 45,
+  },
+];
+
+let buscar = prompt("Ingrese el nombre de la estacion").toLowerCase;
+let resultado = trenes.find(
+  (trenesObj) => trenesObj.hasta.toLowerCase === buscar
+);
+
+console.log(resultado);
+ */
+
+let lineasTrenes = {
+  roca: [
+    {
+      estacionNro: 1,
+      hasta: "constitucion",
+      precio: 0,
+      tardaEnMin: 0,
+    },
+    {
+      estacionNro: 2,
+      hasta: "yrigoyen",
+      precio: 35,
+      tardaEnMin: 4,
+    },
+    {
+      estacionNro: 1,
+      hasta: "d santillan y m kosteki",
+      precio: 40,
+      tardaEnMin: 7,
+    },
+    {
+      estacionNro: 1,
+      hasta: "gerli",
+      precio: 45,
+      tardaEnMin: 10,
+    },
+    {
+      estacionNro: 5,
+      hasta: "lanus",
+      precio: 50,
+      tardaEnMin: 15,
+    },
+    {
+      estacionNro: 6,
+      hasta: "escalada",
+      precio: 50,
+      tardaEnMin: 20,
+    },
+    {
+      linea: "roca",
+      estacionNro: 7,
+      hasta: "banfield",
+      precio: 55,
+      tardaEnMin: 25,
+    },
+    {
+      linea: "roca",
+      estacionNro: 8,
+      hasta: "lomas",
+      precio: 55,
+      tardaEnMin: 30,
+    },
+    {
+      linea: "roca",
+      estacionNro: 9,
+      hasta: "temperley",
+      precio: 60,
+      tardaEnMin: 35,
+    },
+    {
+      linea: "roca",
+      estacionNro: 10,
+      hasta: "adrogue",
+      precio: 60,
+      tardaEnMin: 40,
+    },
+    {
+      linea: "roca",
+      estacionNro: 11,
+      hasta: "burzaco",
+      precio: 65,
+      tardaEnMin: 45,
+    },
+  ],
+  sarmiento: [
+    {
+      estacionNro: 1,
+      hasta: "moreno",
+      precio: 30,
+      tardaEnMin: 10,
+    },
+    {
+      estacionNro: 2,
+      hasta: "merlo",
+      precio: 35,
+      tardaEnMin: 15,
+    },
+    // ...
+  ],
+};
+
+let lineaSeleccionada = prompt("Ingrese el nombre de la línea de tren");
+lineaSeleccionada = lineaSeleccionada.toLowerCase();
+
+let estacionesDeLinea = lineasTrenes[lineaSeleccionada];
+
+if (estacionesDeLinea) {
+  let estacionSeleccionada = prompt("Ingrese el nombre de la estación");
+  estacionSeleccionada = estacionSeleccionada.toLowerCase();
+
+  let resultado = estacionesDeLinea.find(
+    (estacion) => estacion.hasta.toLowerCase() === estacionSeleccionada
+  );
+
+  if (resultado) {
+    console.log("Información de la estación seleccionada: ");
+    console.log(resultado);
+  } else {
+    console.log("La estación ingresada no se encuentra en esta linea");
+  }
+} else {
+  console.log("La línea de tren ingresada no existe");
+}
