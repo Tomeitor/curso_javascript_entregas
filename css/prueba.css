@@ -79,3 +79,16 @@ h1 {
 p {
   line-height: 1.6;
 }
+
+#formEstacion {
+  display: none;
+  text-align: center;
+}
+
+#formLinea {
+  text-align: center;
+}
+
+.sectionForm {
+  margin: 3rem 0;
+}
