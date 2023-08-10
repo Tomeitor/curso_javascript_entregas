@@ -216,56 +216,45 @@ ctrl+k+u
 
 //                     Preentrega n°3:
 
-const listaUl = document.querySelector("#lista");
-
-fetch("../assets/data/data.json")
-  .then((respuesta) => respuesta.json())
-  .then((data) => {
-    /* console.table(data); */
-
-    data.forEach((post) => {
-      const li = document.createElement("li");
-      li.innerHTML = `
-      <h4> Linea: ${post.linea}<h4/>
-      <p> Hasta: ${post.hasta}<p/>
-      <p> Estacion número: ${post.estacionNro}<p/>`;
-      listaUl.append(li);
-    });
-  });
-
 let lineasTrenes = {
   roca: [
     {
+      linea: "roca",
       estacionNro: 1,
       hasta: "constitucion",
       precio: 0,
       tardaEnMin: 0,
     },
     {
+      linea: "roca",
       estacionNro: 2,
       hasta: "yrigoyen",
       precio: 35,
       tardaEnMin: 4,
     },
     {
+      linea: "roca",
       estacionNro: 3,
       hasta: "d santillan y m kosteki",
       precio: 40,
       tardaEnMin: 7,
     },
     {
+      linea: "roca",
       estacionNro: 4,
       hasta: "gerli",
       precio: 45,
       tardaEnMin: 10,
     },
     {
+      linea: "roca",
       estacionNro: 5,
       hasta: "lanus",
       precio: 50,
       tardaEnMin: 15,
     },
     {
+      linea: "roca",
       estacionNro: 6,
       hasta: "escalada",
       precio: 50,
@@ -309,12 +298,14 @@ let lineasTrenes = {
   ],
   sarmiento: [
     {
+      linea: "sarmiento",
       estacionNro: 1,
       hasta: "moreno",
       precio: 30,
       tardaEnMin: 10,
     },
     {
+      linea: "sarmiento",
       estacionNro: 2,
       hasta: "merlo",
       precio: 35,
@@ -325,9 +316,26 @@ let lineasTrenes = {
   ],
 };
 
-function mostrarResultadosEnDOM() {
+const listaUl = document.querySelector("#lista");
+
+fetch("../assets/data/data.json")
+  .then((respuesta) => respuesta.json())
+  .then((data) => {
+    /* console.table(data); */
+
+    data.forEach((post) => {
+      const li = document.createElement("li");
+      li.innerHTML = `
+      <h4> Linea: ${post.linea}<h4/>
+      <p> Hasta: ${post.hasta}<p/>
+      <p> Estacion número: ${post.estacionNro}<p/>`;
+      listaUl.append(li);
+    });
+  });
+
+/* function mostrarResultadosEnDOM() {
   const resultadosDiv = document.getElementById("resultadosDiv");
-  resultadosDiv.innerHTML = ""; // Limpiamos el contenido previo
+  resultadosDiv.innerHTML = "";
 
   resultadosBusqueda.forEach((resultado) => {
     const divResultado = document.createElement("div");
@@ -340,7 +348,10 @@ function mostrarResultadosEnDOM() {
     `;
     resultadosDiv.appendChild(divResultado);
   });
-}
+} */
+
+const resultadosDiv = document.getElementById("resultadosDiv");
+resultadosDiv.innerHTML = "";
 
 // ...
 
@@ -378,6 +389,7 @@ formLinea.addEventListener("submit", function (evento) {
         );
         resultado.horaBusqueda = horaActual;
         console.log("Información de la estación seleccionada: ");
+        /* resultadosBusqueda.length = 0; */
         resultadosBusqueda.push(resultado);
         console.table(resultadosBusqueda);
 
@@ -386,7 +398,20 @@ formLinea.addEventListener("submit", function (evento) {
           JSON.stringify(resultadosBusqueda)
         );
 
-        mostrarResultadosEnDOM();
+        resultadosBusqueda.forEach((resultado) => {
+          const divResultado = document.createElement("div");
+          divResultado.innerHTML = `
+              <p>Linea: ${resultado.linea}</p>
+              <p>Estación: ${resultado.hasta}</p>
+              <p>Precio: ${resultado.precio}</p>
+              <p>Tiempo estimado: ${resultado.tardaEnMin} minutos</p>
+              <p>Hora de búsqueda: ${resultado.horaBusqueda}</p>
+            `;
+          resultadosDiv.appendChild(divResultado);
+        });
+        resultadosBusqueda.length = 0;
+
+        /* mostrarResultadosEnDOM(); */
       } else {
         console.log(
           'La estación "' +
