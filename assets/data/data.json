@@ -1,0 +1,68 @@
+[
+  {
+    "linea": "roca",
+    "estacionNro": 1,
+    "hasta": "constitucion"
+  },
+  {
+    "linea": "roca",
+    "estacionNro": 2,
+    "hasta": "yrigoyen"
+  },
+  {
+    "linea": "roca",
+    "estacionNro": 3,
+    "hasta": "d santillan y m kosteki"
+  },
+  {
+    "linea": "roca",
+    "estacionNro": 4,
+    "hasta": "gerli"
+  },
+  {
+    "linea": "roca",
+    "estacionNro": 5,
+    "hasta": "lanus"
+  },
+  {
+    "linea": "roca",
+    "estacionNro": 6,
+    "hasta": "escalada"
+  },
+  {
+    "linea": "roca",
+    "estacionNro": 7,
+    "hasta": "banfield"
+  },
+  {
+    "linea": "roca",
+    "estacionNro": 8,
+    "hasta": "lomas"
+  },
+  {
+    "linea": "roca",
+    "estacionNro": 9,
+    "hasta": "temperley"
+  },
+  {
+    "linea": "roca",
+    "estacionNro": 10,
+    "hasta": "adrogue"
+  },
+  {
+    "linea": "roca",
+    "estacionNro": 11,
+    "hasta": "burzaco"
+  },
+
+  {
+    "linea": "sarmiento",
+    "estacionNro": 1,
+    "hasta": "moreno"
+  },
+  {
+    "linea": "sarmiento",
+    "estacionNro": 2,
+    "hasta": "merlo"
+  }
+]

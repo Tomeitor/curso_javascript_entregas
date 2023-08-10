@@ -216,6 +216,23 @@ ctrl+k+u
 
 //                     Preentrega n°3:
 
+const listaUl = document.querySelector("#lista");
+
+fetch("../assets/data/data.json")
+  .then((respuesta) => respuesta.json())
+  .then((data) => {
+    /* console.table(data); */
+
+    data.forEach((post) => {
+      const li = document.createElement("li");
+      li.innerHTML = `
+      <h4> Linea: ${post.linea}<h4/>
+      <p> Hasta: ${post.hasta}<p/>}
+      <p> Estacion número: ${post.estacionNro}<p/>}`;
+      listaUl.append(li);
+    });
+  });
+
 let lineasTrenes = {
   roca: [
     {
@@ -308,6 +325,7 @@ let lineasTrenes = {
   ],
 };
 
+const resultadosBusqueda = [];
 let formLinea = document.getElementById("formLinea");
 let formEstacion = document.getElementById("formEstacion");
 
@@ -333,11 +351,17 @@ formLinea.addEventListener("submit", function (evento) {
       );
 
       if (resultado) {
+        const horaActual = luxon.DateTime.local().toLocaleString(
+          luxon.DateTime.TIME_SIMPLE
+        );
+        resultado.horaBusqueda = horaActual;
         console.log("Información de la estación seleccionada: ");
-        console.table(resultado);
+        resultadosBusqueda.push(resultado);
+        console.table(resultadosBusqueda);
+
         let historial = localStorage.setItem(
           "historial",
-          JSON.stringify(resultado)
+          JSON.stringify(resultadosBusqueda)
         );
       } else {
         console.log(
