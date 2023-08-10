@@ -227,8 +227,8 @@ fetch("../assets/data/data.json")
       const li = document.createElement("li");
       li.innerHTML = `
       <h4> Linea: ${post.linea}<h4/>
-      <p> Hasta: ${post.hasta}<p/>}
-      <p> Estacion número: ${post.estacionNro}<p/>}`;
+      <p> Hasta: ${post.hasta}<p/>
+      <p> Estacion número: ${post.estacionNro}<p/>`;
       listaUl.append(li);
     });
   });
@@ -325,6 +325,28 @@ let lineasTrenes = {
   ],
 };
 
+function mostrarResultadosEnDOM() {
+  const resultadosDiv = document.getElementById("resultadosDiv");
+  resultadosDiv.innerHTML = ""; // Limpiamos el contenido previo
+
+  resultadosBusqueda.forEach((resultado) => {
+    const divResultado = document.createElement("div");
+    divResultado.innerHTML = `
+      <p>Linea: ${resultado.linea}</p>
+      <p>Estación: ${resultado.hasta}</p>
+      <p>Precio: ${resultado.precio}</p>
+      <p>Tiempo estimado: ${resultado.tardaEnMin} minutos</p>
+      <p>Hora de búsqueda: ${resultado.horaBusqueda}</p>
+    `;
+    resultadosDiv.appendChild(divResultado);
+  });
+}
+
+// ...
+
+// Dentro del bloque donde añades la hora de búsqueda y guardas en el historial
+// ...
+
 const resultadosBusqueda = [];
 let formLinea = document.getElementById("formLinea");
 let formEstacion = document.getElementById("formEstacion");
@@ -363,6 +385,8 @@ formLinea.addEventListener("submit", function (evento) {
           "historial",
           JSON.stringify(resultadosBusqueda)
         );
+
+        mostrarResultadosEnDOM();
       } else {
         console.log(
           'La estación "' +
