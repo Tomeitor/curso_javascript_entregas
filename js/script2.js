@@ -321,42 +321,18 @@ const listaUl = document.querySelector("#lista");
 fetch("../assets/data/data.json")
   .then((respuesta) => respuesta.json())
   .then((data) => {
-    /* console.table(data); */
-
     data.forEach((post) => {
       const li = document.createElement("li");
+      li.classList.add("liClass");
       li.innerHTML = `
-      <h4> Linea: ${post.linea}<h4/>
+      <p> Linea: ${post.linea}<p/>
       <p> Hasta: ${post.hasta}<p/>
       <p> Estacion número: ${post.estacionNro}<p/>`;
       listaUl.append(li);
     });
   });
 
-/* function mostrarResultadosEnDOM() {
-  const resultadosDiv = document.getElementById("resultadosDiv");
-  resultadosDiv.innerHTML = "";
-
-  resultadosBusqueda.forEach((resultado) => {
-    const divResultado = document.createElement("div");
-    divResultado.innerHTML = `
-      <p>Linea: ${resultado.linea}</p>
-      <p>Estación: ${resultado.hasta}</p>
-      <p>Precio: ${resultado.precio}</p>
-      <p>Tiempo estimado: ${resultado.tardaEnMin} minutos</p>
-      <p>Hora de búsqueda: ${resultado.horaBusqueda}</p>
-    `;
-    resultadosDiv.appendChild(divResultado);
-  });
-} */
-
 const resultadosDiv = document.getElementById("resultadosDiv");
-resultadosDiv.innerHTML = "";
-
-// ...
-
-// Dentro del bloque donde añades la hora de búsqueda y guardas en el historial
-// ...
 
 const resultadosBusqueda = [];
 let formLinea = document.getElementById("formLinea");
@@ -389,7 +365,7 @@ formLinea.addEventListener("submit", function (evento) {
         );
         resultado.horaBusqueda = horaActual;
         console.log("Información de la estación seleccionada: ");
-        /* resultadosBusqueda.length = 0; */
+        resultadosBusqueda.length = 0;
         resultadosBusqueda.push(resultado);
         console.table(resultadosBusqueda);
 
@@ -398,30 +374,37 @@ formLinea.addEventListener("submit", function (evento) {
           JSON.stringify(resultadosBusqueda)
         );
 
+        resultadosDiv.innerHTML = "";
         resultadosBusqueda.forEach((resultado) => {
-          const divResultado = document.createElement("div");
-          divResultado.innerHTML = `
+          const divResultado1 = document.createElement("div");
+          divResultado1.innerHTML = `
               <p>Linea: ${resultado.linea}</p>
               <p>Estación: ${resultado.hasta}</p>
               <p>Precio: ${resultado.precio}</p>
               <p>Tiempo estimado: ${resultado.tardaEnMin} minutos</p>
               <p>Hora de búsqueda: ${resultado.horaBusqueda}</p>
             `;
-          resultadosDiv.appendChild(divResultado);
+          resultadosDiv.appendChild(divResultado1);
         });
-        resultadosBusqueda.length = 0;
-
-        /* mostrarResultadosEnDOM(); */
       } else {
         console.log(
           'La estación "' +
             estacionSeleccionada +
             '" no se encuentra en esta linea'
         );
+
+        resultadosDiv.innerHTML = "";
+        const divResultado2 = document.createElement("div");
+        divResultado2.innerHTML = `<p> La estación "${estacionSeleccionada}" no se encuentra en esta linea`;
+        resultadosDiv.appendChild(divResultado2);
       }
     });
   } else {
     console.log('La línea de tren "' + lineaSeleccionada + '" no existe');
+    resultadosDiv.innerHTML = "";
+    const divResultado3 = document.createElement("div");
+    divResultado3.innerHTML = `<p> La línea de tren "${lineaSeleccionada}" no existe`;
+    resultadosDiv.appendChild(divResultado3);
   }
 });
 
